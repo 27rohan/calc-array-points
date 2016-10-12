@@ -99,7 +99,6 @@ func multiply_array(array: [Int]) -> Int {
 }
 
 func avg(array: [Int]) -> Double {
-    if array.count==0{return 0}
     var sum = array[0]
     var i = 1
     while i < array.count{
@@ -131,11 +130,22 @@ func math_array(){
     print("Enter integers separated by a comma")
     
     let statement = readLine(strippingNewline: true)!
-    let inputs = statement.components(separatedBy: ",")
     //print(entries)
-    let entries = transform_array(array:inputs)
     
     //print(b)
+    
+    if statement.contains(",")==false {
+        print("nil")
+    }
+    else{
+    let inputs = statement.components(separatedBy: ",")
+
+    if inputs.count == 0 {
+        print("nil")
+    }
+    else{
+
+    let entries = transform_array(array:inputs)
     
     if command == "add"{
         //print("Addition")
@@ -154,8 +164,9 @@ func math_array(){
         print(count(array:entries))
     }
     
+    }
 }
-
+}
 math_array()
 
 print("Please enter X and Y co-ordinates for point A as x,y")
