@@ -9,7 +9,6 @@
 import Foundation
 
 
-
 func add(x:Int, y:Int) -> Int{
     return x+y
 }
@@ -177,9 +176,20 @@ var A_co_s = A.components(separatedBy: ",")
 
 
 if A_co_s.count != 2{
+    
     print("Incorrect input")
 }
-else{
+var A_check = 0
+for i in A_co_s{
+        if i.contains("."){
+            print("Incorrect input")
+            A_check = 1
+            break
+        }
+
+    }
+
+if A_check == 0 {
 var A_co = transform_array(array:A_co_s)
 
 print("Please enter X and Y co-ordinates for point B as x,y")
@@ -188,11 +198,21 @@ var B = readLine(strippingNewline: true)!
 var B_co_s = B.components(separatedBy: ",")
     
     
-if B_co_s.count != 2{
+if B_co_s.count != 2 {
     print("Incorrect input")
 }
-else{
-var B_co = transform_array(array:B_co_s)
+    var B_check = 0
+    for i in B_co_s{
+        if i.contains("."){
+            print("Incorrect input")
+            B_check = 1
+            break
+        }
+        
+    }
+    
+if B_check == 0 {
+        var B_co = transform_array(array:B_co_s)
 
 func add_tuples(A:[Int],B:[Int]) -> (Int,Int){
     return ((A[0]+B[0]),(A[1]+B[1]))
