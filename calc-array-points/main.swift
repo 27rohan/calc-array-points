@@ -24,14 +24,11 @@ func multiply(x:Int, y:Int) -> Int{
 }
 
 
-func divide(x:Int, y:Int) -> Int{
-    return x/y
+func divide(x:Int, y:Int) -> Double{
+    return Double(x)/Double(y)
 }
 
-//print(add(x:1,y:3))
-
-
-func math() -> Int{
+func math(){
     print("Please enter operation: +,-,*,/")
     let command = String(readLine(strippingNewline: true)!)
     if (command != "+") && (command != "-") && (command != "*") && (command != "/"){
@@ -41,50 +38,44 @@ func math() -> Int{
     
     var a:Int
     print("First integer")
-
+    
     if let i = readLine(strippingNewline: true){ //keyboard
         a = Int(i)!
-        //inputs.append(a)
     }
     else{
         a = 0
     }
-    //print(a)
     
     print("Second integer")
     
     var b:Int
     if let i = readLine(strippingNewline: true){ //keyboard
         b = Int(i)!
-        //inputs.append(a)
     }
     else{
         b = 0
     }
-    //print(b)
     
     if command == "+"{
         //print("Addition")
-        return add(x:a,y:b)
+        print(add(x:a,y:b))
     }
     else if command == "-"{
         //print("Addition")
-        return subtract(x:a,y:b)
+        print(subtract(x:a,y:b))
     }
     else if command == "*"{
         //print("Addition")
-        return multiply(x:a,y:b)
+        print(multiply(x:a,y:b))
     }
     else if command == "/"{
         //print("Addition")
-        return divide(x:a,y:b)
+        print(divide(x:a,y:b))
     }
-return 0
-
+    
 }
 
-print(math())
-
+math()
 
 func count(array:[Int]) -> Int{
     return array.count
@@ -143,7 +134,7 @@ func math_array(){
     let inputs = statement.components(separatedBy: ",")
     //print(entries)
     let entries = transform_array(array:inputs)
-
+    
     //print(b)
     
     if command == "add"{
@@ -162,46 +153,45 @@ func math_array(){
         //print("Addition")
         print(count(array:entries))
     }
-
+    
 }
 
 math_array()
-
-
 
 print("Please enter X and Y co-ordinates for point A as x,y")
 
 var A = readLine(strippingNewline: true)!
 var A_co_s = A.components(separatedBy: ",")
-
+var A_check = 0
 
 if A_co_s.count != 2{
-    
+    A_check = 1
     print("Incorrect input")
 }
-var A_check = 0
-for i in A_co_s{
-        if i.contains("."){
-            print("Incorrect input")
-            A_check = 1
-            break
-        }
 
+for i in A_co_s{
+    if i.contains("."){
+        print("Incorrect input")
+        A_check = 1
+        break
     }
+    
+}
 
 if A_check == 0 {
-var A_co = transform_array(array:A_co_s)
-
-print("Please enter X and Y co-ordinates for point B as x,y")
-
-var B = readLine(strippingNewline: true)!
-var B_co_s = B.components(separatedBy: ",")
+    var A_co = transform_array(array:A_co_s)
     
+    print("Please enter X and Y co-ordinates for point B as x,y")
     
-if B_co_s.count != 2 {
-    print("Incorrect input")
-}
+    var B = readLine(strippingNewline: true)!
+    var B_co_s = B.components(separatedBy: ",")
     var B_check = 0
+    
+    
+    if B_co_s.count != 2 {
+        B_check = 1
+        print("Incorrect input")
+    }
     for i in B_co_s{
         if i.contains("."){
             print("Incorrect input")
@@ -211,20 +201,20 @@ if B_co_s.count != 2 {
         
     }
     
-if B_check == 0 {
+    if B_check == 0 {
         var B_co = transform_array(array:B_co_s)
-
-func add_tuples(A:[Int],B:[Int]) -> (Int,Int){
-    return ((A[0]+B[0]),(A[1]+B[1]))
-}
-
-func subtract_tuples(A:[Int],B:[Int]) -> (Int,Int){
-    return ((A[0]-B[0]),(A[1]-B[1]))
-}
-
-print("Addition of X and Y tuples = \(add_tuples(A: A_co, B: B_co))")
-print("Subtraction of X and Y tuples = \(subtract_tuples(A: A_co, B: B_co))")
-
-}
+        
+        func add_tuples(A:[Int],B:[Int]) -> (Int,Int){
+            return ((A[0]+B[0]),(A[1]+B[1]))
+        }
+        
+        func subtract_tuples(A:[Int],B:[Int]) -> (Int,Int){
+            return ((A[0]-B[0]),(A[1]-B[1]))
+        }
+        
+        print("Addition of X and Y tuples = \(add_tuples(A: A_co, B: B_co))")
+        print("Subtraction of X and Y tuples = \(subtract_tuples(A: A_co, B: B_co))")
+        
+    }
 }
 
